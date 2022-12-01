@@ -25,6 +25,7 @@ const TweetHome = () => {
             <TweetTypeButton text="Tweet Cinematography" to="/cinematography" />
             <TweetTypeButton text="Tweet Sountrack" to="/soundtrack" />
             <TweetTypeButton text="Tweet Director" to="/director" />
+            <TweetTypeButton text="Tweet Featured Person" to="/person" />
         </div>
     )
 }

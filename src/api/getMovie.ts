@@ -25,7 +25,7 @@ export async function getTweetById({id}: {id: string}){
         headers: {auth}
     })
     const tweet = await data.json()
-    return tweet as Movie
+    return tweet as Movie & {thread_ids: string[]}
 }
 
 export async function updateTweetById(id: string, tweet: Movie){
@@ -33,6 +33,16 @@ export async function updateTweetById(id: string, tweet: Movie){
         method: "PUT",
         headers: {auth,'Content-Type': 'application/json',},
         body: JSON.stringify({tweet})
+    })
+    const tweetId = await data.json()
+    return tweetId
+}
+
+export async function removeChildThreadFromParentById(parentId: string, childId: string){
+    const data = await fetch(import.meta.env.VITE_BACKEND_URL+`/api/supabase/thread/${parentId}`, {
+        method: "DELETE",
+        headers: {auth,'Content-Type': 'application/json',},
+        body: JSON.stringify({id: childId})
     })
     const tweetId = await data.json()
     return tweetId

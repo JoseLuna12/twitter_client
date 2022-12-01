@@ -10,12 +10,15 @@ export interface GetMovie {
 
 const auth = import.meta.env.VITE_REQUEST_AUTH
 
-export async function getDirector({name, id, options, images}: GetMovie){
+export async function getPerson({name, id, options, images}: GetMovie, type ="director"){
     const data = await fetch(import.meta.env.VITE_BACKEND_URL+"/api/person", {
         method: "POST",
         headers: {auth,'Content-Type': 'application/json',},
-        body: JSON.stringify({name, id, options, images, type: 'director'})
+        body: JSON.stringify({name, id, options, images, type})
     })
     const movie = await data.json()
+    if(options?.Thread){
+        return movie as {movieTweet: Movie[]}
+    }
     return movie as {movieTweet: Movie}
 }

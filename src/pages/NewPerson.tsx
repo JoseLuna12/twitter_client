@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom"
 import MovieOptions, { Option } from "../components/form/queryOptions"
 import MultipleImagesInput, { CustomImages } from "../components/form/multipleImages"
 import { generateDirector } from "../api/director"
+import { generatePerson } from "../api/person"
 import ImageVisualizer from "../components/tweet/imageVisualizer"
 
-const NewDirector = () => {
+const NewPerson = () => {
     const [id, setId] = useState("")
     const [name, setName] = useState("")
     const [images, setImages] = useState<CustomImages[]>([])
@@ -36,13 +37,11 @@ const NewDirector = () => {
             images,
             options: tweetOptions
         }
-        console.log(tweet)
-        // const urlText = tweetOptions.Url ? url : false
-        const { movieTweet } = await generateDirector(tweet)
-        console.log({ movieTweet })
-        // await getMovie({ id, name, options: tweetOptions })
+        const { movieTweet } = await generatePerson(tweet)
+
         const dbid = movieTweet as any
-        const sbid = dbid.dbId
+        const sbid = dbid?.[0]?.dbId || dbid.dbid
+        console.log(sbid)
         setNewTweetId(sbid)
     }
 
@@ -57,9 +56,9 @@ const NewDirector = () => {
     }
     return (
         <div>
-            <BodyAction title="Tweet Director" button={{ text: "Generate Tweet", action: generateTweet }}>
+            <BodyAction title="Tweet Person" button={{ text: "Generate Tweet", action: generateTweet }}>
                 <div>
-                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Emoji", default: tweetOptions.Emoji }, { type: "Images", default: tweetOptions.Images }]} display={["Emoji", "Poster", "Images"]} />
+                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Emoji", default: tweetOptions.Emoji }, { type: "Images", default: tweetOptions.Images }]} display={["Emoji", "Poster", "Images", "Poster", "Thread"]} />
                     <div className="space-y-2 pt-4">
                         <InputText placeholder="id" onChange={setId} />
                         <InputText placeholder="name" onChange={setName} />
@@ -102,4 +101,4 @@ const NewDirector = () => {
     )
 }
 
-export default NewDirector
+export default NewPerson
