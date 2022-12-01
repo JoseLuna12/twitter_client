@@ -31,7 +31,7 @@ export async function getTweetById({id}: {id: string}){
 export async function updateTweetById(id: string, tweet: Movie){
     const data = await fetch(import.meta.env.VITE_BACKEND_URL+`/api/supabase/tweet/${id}`, {
         method: "PUT",
-        headers: {auth,'Content-Type': 'application/json',},
+        headers: {auth,'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify({tweet})
     })
     const tweetId = await data.json()
@@ -41,7 +41,7 @@ export async function updateTweetById(id: string, tweet: Movie){
 export async function removeChildThreadFromParentById(parentId: string, childId: string){
     const data = await fetch(import.meta.env.VITE_BACKEND_URL+`/api/supabase/thread/${parentId}`, {
         method: "DELETE",
-        headers: {auth,'Content-Type': 'application/json',},
+        headers: {auth,'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify({id: childId})
     })
     const tweetId = await data.json()
@@ -51,7 +51,7 @@ export async function removeChildThreadFromParentById(parentId: string, childId:
 export async function deleteTweetById(id: string){
     const data = await fetch(import.meta.env.VITE_BACKEND_URL+`/api/supabase/tweet/${id}`, {
         method: "DELETE",
-        headers: {auth,'Content-Type': 'application/json',},
+        headers: {auth,'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
     })
     const tweetId = await data.json()
     return tweetId

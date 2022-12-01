@@ -13,7 +13,7 @@ const auth = import.meta.env.VITE_REQUEST_AUTH
 export async function generateTweetFromMovie({name, id, options, images}: GetMovie, type = "list"){
     const data = await fetch(import.meta.env.VITE_BACKEND_URL+"/api/movie", {
         method: "POST",
-        headers: {auth,'Content-Type': 'application/json',},
+        headers: {auth,'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify({name, id, options, images, type})
     })
     const movie = await data.json()
