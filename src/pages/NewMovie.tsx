@@ -55,7 +55,7 @@ const NewMovie = () => {
                                     <ButtonTweet onClick={() => nav(`/preview/${newTweetId}`)} text="Visualize Tweet" color="success" />
                                 </div>
                             </div>
-                            : null
+                            : <></>
                     }
                 </div>
             </BodyAction>

@@ -30,16 +30,20 @@ const HeaderTweet = (props: HeaderProps) => {
         <div className="mt-5 w-full text-center flex px-4">
             {
                 back ?
-                    <button className="text-tw-blue text-sm" onClick={goBackPage}>back</button>
-                    : <></>
+                    <div className="w-1/6">
+                        <button className="text-tw-blue text-sm" onClick={goBackPage}>back</button>
+                    </div>
+                    : <div className="w-1/6"></div>
             }
-            <div className="text-2xl font-bol flex-1">
+            <div className="text-2xl font-bol w-full">
                 {title}
             </div>
             {
                 customAction ?
-                    <button disabled={loadingCA} className="text-green-600 text-sm" onClick={customAction.action}>{customAction.text}</button>
-                    : <></>
+                    <div className="w-1/6">
+                        <button disabled={loadingCA} className="text-green-600 text-sm" onClick={customAction.action}>{customAction.text}</button>
+                    </div>
+                    : <div className="w-1/6"></div>
             }
         </div>
     )

@@ -86,15 +86,6 @@ const NewPerson = () => {
                             )
                         })
                     }
-                    {
-                        newTweetId ?
-                            <div className="w-full h-44 flex place-items-center">
-                                <div className="w-full">
-                                    <ButtonTweet onClick={() => nav(`/preview/${newTweetId}`)} text="Visualize Tweet" color="success" />
-                                </div>
-                            </div>
-                            : <></>
-                    }
                 </div>
             </BodyAction>
         </div>

@@ -1,14 +1,16 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { generateCinematography } from "../api/cinematography"
 import BodyAction from "../components/bodyAction"
+import ButtonTweet from "../components/form/buttonTweet"
 import InputText from "../components/form/InputText"
 import MultipleImagesInput, { CustomImages } from "../components/form/multipleImages"
 import MovieOptions, { Option } from "../components/form/queryOptions"
 
 const Cinematography = () => {
+    const nav = useNavigate()
     const [id, setId] = useState("")
     const [name, setName] = useState("")
-    // const [url, setUrl] = useState("")
     const [newTweetId, setNewTweetId] = useState("")
     const [tweetOptions, setTweetOptions] = useState<{ [key: string]: boolean }>({ Images: true })
     const [images, setImages] = useState<CustomImages[]>([])
@@ -46,7 +48,13 @@ const Cinematography = () => {
 
                         {tweetOptions.Images ? <MultipleImagesInput onlyUrl setImages={setImages} /> : <></>}
                         {
-                            newTweetId
+                            newTweetId ?
+                                <div className="w-full h-44 flex place-items-center">
+                                    <div className="w-full">
+                                        <ButtonTweet onClick={() => nav(`/preview/${newTweetId}`)} text="Visualize Tweet" color="success" />
+                                    </div>
+                                </div>
+                                : <></>
                         }
                         {
                             images.map((im, index) => {

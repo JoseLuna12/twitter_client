@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
 } from "react-router-dom";
+import AllTweets from "../pages/allTweets";
 import Cinematography from "../pages/NewCinematography";
 import NewDirector from "../pages/NewDirector";
 import NewMovie from "../pages/NewMovie";
@@ -33,6 +34,10 @@ const tweetRouter = createBrowserRouter([
   {
     path: "/person",
     element: <NewPerson />
+  },
+  {
+    path: "/tweets",
+    element: <AllTweets />
   },
   {
     path: "/preview/:tweetId",

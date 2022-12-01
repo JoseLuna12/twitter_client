@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { Movie } from "../../context/twitterContext"
+import ButtonTweet from "../form/buttonTweet"
 
 const MAX_TWEET_CHARS = 280
 
 interface TweetPreviewProps {
     tweet: Movie,
-    setTweet: React.Dispatch<React.SetStateAction<Movie>>,
+    setTweet: React.Dispatch<React.SetStateAction<Movie>>
 }
 
 const TweetImagePreview = (images: string[]) => {
