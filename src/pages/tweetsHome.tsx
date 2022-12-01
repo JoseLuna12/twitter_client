@@ -6,7 +6,7 @@ const TweetTypeButton = ({ text, to }: { text: string, to: string }) => {
         <div className="w-full px-10 my-3">
             <Link to={to} className="w-full bg-gray-bg flex p-2 rounded-2xl border-2 border-gray-bg hover:bg-slate-100 hover:border-tw-blue transition">
                 <div className="">
-                    <img width={30} src="/twitter.png" alt="" />
+                    <img width={30} src="/twitterButton.png" alt="" />
                 </div>
                 <div className="flex-1 flex justify-center items-center font-semibold">
                     {text}
