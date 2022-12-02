@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { deleteTweetById } from "../api/getMovie"
 import { getAllTweets, retweetByTweetId } from "../api/getTweets"
 import { getTweets, tweetMovieById } from "../api/tweet"
@@ -36,6 +37,9 @@ const AllTweets = () => {
     const [movieTweets, setMovies] = useState<MovieDatabase[]>([])
     const [query, setQuery] = useState("")
     const [filter, setFilter] = useState<{ [key: string]: boolean }>({ posted: false, thread: false })
+
+    const nav = useNavigate()
+
     useEffect(() => {
         const getTweetsValues = async () => {
             const { data: tweets }: { data: MovieDatabase[] } = await getAllTweets()
@@ -103,6 +107,23 @@ const AllTweets = () => {
                 [filterKey]: toggle
             }
         })
+
+        if (toggle) {
+            if (filterKey == "posted") {
+                const newMovies = movieTweets.filter(mv => {
+                    return mv.tweet_id && mv.posted
+                })
+                setMovies(newMovies)
+            }
+            if (filterKey == "thread") {
+                const newMovies = movieTweets.filter(mv => {
+                    return mv.thread_ids?.length
+                })
+                setMovies(newMovies)
+            }
+        } else {
+            setMovies(originalTweets)
+        }
     }
 
     return (
@@ -114,9 +135,9 @@ const AllTweets = () => {
                     {
                         Object.keys(filter).map(f => {
                             return (
-                                <div onClick={() => filterTweet(f)} className={`px-4 py-1 ${filter[f] ? " bg-tw-blue" : "bg-gray-400"} $ text-sm text-white text-center rounded-full`}>
+                                <button onClick={() => filterTweet(f)} className={`px-4 py-1 ${filter[f] ? " bg-tw-blue" : "bg-gray-400"} $ text-sm text-white text-center rounded-full`}>
                                     {f}
-                                </div>
+                                </button>
                             )
                         })
                     }
@@ -133,11 +154,12 @@ const AllTweets = () => {
                                     <TweetPreview setTweet={() => { }} tweet={movie} />
                                     <div className="flex w-full space-x-3 px-8 text-white">
                                         <button className="flex-1 px-3 py-2 bg-red-600 rounded-xl" onClick={() => deleteTweet(movie.id)} >Delete</button>
+                                        <button className="flex-1 px-3 py-2 bg-indigo-700 rounded-xl" onClick={() => nav(`/preview/${movie.id}`)} >Edit</button>
                                         {
-                                            movie?.tweet_id ?
+                                            movie?.posted && movie?.tweet_id ?
                                                 <button className="flex-1 px-3 py-2 bg-tw-blue rounded-xl" onClick={() => retweet(movie.tweet_id as string)} >Retweet</button>
                                                 :
-                                                <button className="flex-1 px-3 py-2 bg-tw-blue rounded-xl" onClick={() => postTweet(movie.id)} >Retweet</button>
+                                                <button className="flex-1 px-3 py-2 bg-green-600 rounded-xl" onClick={() => postTweet(movie.id)} >Post</button>
                                         }
                                     </div>
                                 </div>
