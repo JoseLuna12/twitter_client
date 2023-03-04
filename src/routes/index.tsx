@@ -9,6 +9,7 @@ import NewPerson from "../pages/NewPerson";
 import NewSoundtrack from "../pages/NewSoundtrack";
 import TweetPreviewPage from "../pages/tweetPreviewPage";
 import TweetHome from "../pages/tweetsHome";
+import PalettePage from "../pages/palette";
 
 const tweetRouter = createBrowserRouter([
   {
@@ -42,7 +43,11 @@ const tweetRouter = createBrowserRouter([
   {
     path: "/preview/:tweetId",
     element: <TweetPreviewPage />,
-  }
+  },
+  {
+    path: "/palette",
+    element: <PalettePage />,
+  },
 ]);
 
 export default tweetRouter

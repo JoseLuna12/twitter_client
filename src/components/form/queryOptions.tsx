@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-type OptionsType = "Ai" | "Emoji" | "Thread" | "Poster" | "Url" | "Images"
+type OptionsType = "Ai" | "Emoji" | "Thread" | "Poster" | "Url" | "Images" | "Palette"
 
 interface DefaultsProps {
     type: OptionsType,
@@ -60,6 +60,11 @@ const MovieOptions = (props: MovioOptionsProps) => {
             name: "Url",
             active: getDefaultByType("Url", defaults),
             show: getDisplayByType("Url", display)
+        },
+        {
+            name: "Palette",
+            active: getDefaultByType("Palette", defaults),
+            show: getDisplayByType("Palette", display)
         }
     ])
 
