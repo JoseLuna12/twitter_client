@@ -7,7 +7,8 @@ export interface Movie {
     body: string,
     hashtag: string,
     url?: string,
-    images: string[]
+    images: string[],
+    later_id?: number
 }
 
 interface AllTweetsInterface {

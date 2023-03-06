@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { deleteTweetById } from "../api/getMovie"
-import { getAllTweets, retweetByTweetId } from "../api/getTweets"
-import { getTweets, tweetMovieById } from "../api/tweet"
+import { getLaterTweetsValues, retweetByTweetId } from "../api/getTweets"
+import { tweetMovieById } from "../api/tweet"
 import BodyAction from "../components/bodyAction"
 import TweetPreview from "../components/tweet/tweetPreview"
 
@@ -33,7 +33,7 @@ interface MovieDatabase {
     later_id?: number
 }
 
-const AllTweets = () => {
+const AllLaterTweets = () => {
     const [originalTweets, setOriginalTweets] = useState<MovieDatabase[]>([])
     const [movieTweets, setMovies] = useState<MovieDatabase[]>([])
     const [query, setQuery] = useState("")
@@ -43,7 +43,7 @@ const AllTweets = () => {
 
     useEffect(() => {
         const getTweetsValues = async () => {
-            const { data: tweets }: { data: MovieDatabase[] } = await getAllTweets()
+            const { data: tweets }: { data: MovieDatabase[] } = await getLaterTweetsValues()
             const sortedTweets = tweets.sort(function (a, b) {
                 const dateA = new Date(a.created_at)
                 const dateB = new Date(b.created_at)
@@ -56,6 +56,7 @@ const AllTweets = () => {
     }, [])
 
     const deleteTweet = async (id: string) => {
+        console.log({ id })
         await deleteTweetById(id)
         const filteredTweets = movieTweets?.filter(tw => tw.id != id)
         setMovies(filteredTweets)
@@ -173,4 +174,4 @@ const AllTweets = () => {
     )
 }
 
-export default AllTweets
+export default AllLaterTweets

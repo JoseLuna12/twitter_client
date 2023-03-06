@@ -94,6 +94,7 @@ const TweetPreview = ({ tweet, setTweet }: TweetPreviewProps) => {
     return (
         <div className="w-full px-4 pt-5 pb-1 flex justify-center relative">
             <div className="bg-gray-bg rounded-xl w-full h-auto p-5">
+                {tweet.later_id ? '🤖' : ''}
                 <div ref={headerRef} data-name="head" style={{ whiteSpace: "pre-line" }} suppressContentEditableWarning contentEditable onInput={updateTweet} >
                     {tweet.head}
                 </div>

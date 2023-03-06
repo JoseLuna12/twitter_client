@@ -28,6 +28,7 @@ const TweetHome = () => {
             <TweetTypeButton text="Tweet Featured Person" to="/person" />
             <TweetTypeButton text="Tweet Palette" to="/palette" />
             <div className="py-2">
+                <TweetTypeButton text="View Later Tweets" to="/later" />
                 <TweetTypeButton text="View Tweets" to="/tweets" />
             </div>
         </div>

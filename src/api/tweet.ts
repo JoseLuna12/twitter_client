@@ -14,6 +14,12 @@ export async function getTweets() {
     })
 }
 
+export async function getLaterTweets() {
+    return fetch(import.meta.env.VITE_BACKEND_URL + "/api/supabase/later_tweets", {
+        headers: { auth, 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+    })
+}
+
 export async function retweetById(tweetId: string) {
     return fetch(import.meta.env.VITE_BACKEND_URL + "/api/tweet/retweet/" + tweetId, {
         headers: { auth, 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
