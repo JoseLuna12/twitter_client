@@ -17,7 +17,7 @@ const NewPerson = () => {
     const [name, setName] = useState("")
     const [images, setImages] = useState<CustomImages[]>([])
 
-    const [tweetOptions, setTweetOptions] = useState<{ [key: string]: boolean }>({ "Images": true, "Emoji": true })
+    const [tweetOptions, setTweetOptions] = useState<{ [key: string]: boolean }>({ "Images": true, "Emoji": true, "Later": false })
 
     const nav = useNavigate()
 
@@ -58,7 +58,7 @@ const NewPerson = () => {
         <div>
             <BodyAction title="Tweet Person" button={{ text: "Generate Tweet", action: generateTweet }}>
                 <div>
-                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Emoji", default: tweetOptions.Emoji }, { type: "Images", default: tweetOptions.Images }]} display={["Emoji", "Poster", "Images", "Poster", "Thread"]} />
+                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Emoji", default: tweetOptions.Emoji }, { type: "Images", default: tweetOptions.Images }]} display={["Emoji", "Poster", "Images", "Poster", "Thread", "Later"]} />
                     <div className="space-y-2 pt-4">
                         <InputText placeholder="id" onChange={setId} />
                         <InputText placeholder="name" onChange={setName} />

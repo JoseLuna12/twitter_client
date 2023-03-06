@@ -40,7 +40,7 @@ const NewSoundtrack = () => {
         <div>
             <BodyAction button={{ action: generateTweet, text: "Visualize" }} title="Soundtrack">
                 <div>
-                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Poster", default: tweetOptions.Poster }, { type: "Url", default: tweetOptions.Url }]} display={["Emoji", "Poster", "Url"]} />
+                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Poster", default: tweetOptions.Poster }, { type: "Url", default: tweetOptions.Url }]} display={["Emoji", "Poster", "Url", "Later"]} />
                     <div className="space-y-2 pt-4">
                         <InputText onChange={setName} placeholder="name" />
                         <InputText onChange={setId} placeholder="id" />

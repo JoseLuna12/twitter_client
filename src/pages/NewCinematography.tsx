@@ -41,7 +41,7 @@ const Cinematography = () => {
         <div>
             <BodyAction title="Cinematography" button={{ action: generateTweet, text: "Generate Tweet" }}>
                 <div>
-                    <MovieOptions handleOption={handleOption} display={["Emoji", "Thread", "Images"]} defaults={[{ type: "Images", default: tweetOptions.Images }]} />
+                    <MovieOptions handleOption={handleOption} display={["Emoji", "Thread", "Images", "Later"]} defaults={[{ type: "Images", default: tweetOptions.Images }]} />
                     <div className="space-y-2 pt-4">
                         <InputText onChange={setId} placeholder="Id" />
                         <InputText onChange={setName} placeholder="Name" />

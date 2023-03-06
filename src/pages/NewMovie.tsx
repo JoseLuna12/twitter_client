@@ -37,7 +37,7 @@ const NewMovie = () => {
         <div>
             <BodyAction title="Tweet Movie" button={{ text: "Generate Tweet", action: generateTweet }}>
                 <div>
-                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Ai", default: true }]} display={["Ai", "Emoji", "Poster", "Url"]} />
+                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Ai", default: true }]} display={["Ai", "Emoji", "Poster", "Url", "Later"]} />
                     <div className="space-y-2 pt-4">
                         <InputText placeholder="id" onChange={setId} />
                         <InputText placeholder="name" onChange={setName} />

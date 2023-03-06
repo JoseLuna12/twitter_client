@@ -59,7 +59,7 @@ const NewDirector = () => {
         <div>
             <BodyAction title="Tweet Director" button={{ text: "Generate Tweet", action: generateTweet }}>
                 <div>
-                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Emoji", default: tweetOptions.Emoji }, { type: "Images", default: tweetOptions.Images }]} display={["Emoji", "Poster", "Images"]} />
+                    <MovieOptions handleOption={handleOption} defaults={[{ type: "Emoji", default: tweetOptions.Emoji }, { type: "Images", default: tweetOptions.Images }]} display={["Emoji", "Poster", "Images", "Later"]} />
                     <div className="space-y-2 pt-4">
                         <InputText placeholder="id" onChange={setId} />
                         <InputText placeholder="name" onChange={setName} />
